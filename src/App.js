@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './modules/header.jsx';
 import Info from './modules/info.jsx';
@@ -8,7 +7,7 @@ import InTheWorks from './modules/inTheWorks.jsx';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App main-box">
       <header className="App-header">
         <Header></Header>
         <Info></Info>
