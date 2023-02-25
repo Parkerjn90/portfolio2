@@ -1,5 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import Header from './modules/header.jsx';
+import Info from './modules/info.jsx';
+import Experience from './modules/experience.jsx';
+import Jobs from './modules/jobs.jsx';
+import InTheWorks from './modules/InTheWorks.jsx';
 
 function App() {
   return (
