@@ -32,12 +32,17 @@
 
 h1 {
   color: #f29829;
+  display: inline-block;
 }
 
 h2 {
   color: #05f2db;
 }
 
-.main-box {
-
+.me {
+  border: 1px solid #f29829;
+  border-radius: 50%;
+  padding: 5px;
+  width: 150px;
+  display: inline-block;
 };
