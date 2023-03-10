@@ -4,13 +4,8 @@ const Info = () => {
   return <div className="flex-box-1">
     <h2>Info</h2>
     <div className="inner-text">
-      <p>
-      Front End | JavaScript (ES5 and ES6), React, HTML5, CSS3, Styled-Components, SASS, Axios, AJAX <br/>
-      Back End | Node.js, Express, MySQL, SQLite, MongoDB, Mongoose, PostgreSQL, PGAdmin, RESTful API Development<br/>
-      Testing/Deployment | Jest, Mocha, Chai, AWS: EC2<br/>
-      Developer Tools | Vim, Git, npm, yarn, Webpack, Babel, Postman
-      </p>
-      <p>I spent the first 8 years of my career building joy for working
+      <h3>My Professional Background:&#32;</h3>
+      <p>I spent the first 8 years of my career developing a joy for working
         with people of diverse backgrounds - I was a high school French teacher.
         Through this experience I also continued to develop a love I&#39;ve had my whole life of
         solving puzzles and complex problems. I should have been a math teacher.
