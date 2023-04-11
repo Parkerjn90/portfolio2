@@ -8,7 +8,7 @@ import InTheWorks from './modules/inTheWorks.jsx';
 
 function App() {
 
-  const [projects, setProjects] = useState([
+  const [projects] = useState([
     {title: 'Questions and Answers Service',
     goal: 'Front-End clothing retail application',
     site: 'github.com/Team-Pharos/FEC_Lighthouse',
@@ -34,13 +34,6 @@ function App() {
       'Led a team of eight developers to create a multi-page, full-stack application for video game management',
       'Leveraged React, Redux, and Axios to allow users to manage collections and view detailed information',
       'Implemented SASS for site-wide styling in dark mode to improve accessibility'
-    ]
-    },
-    {title: 'Plant Planner',
-    goal: 'Full-stack application to cloud source plant care information and to help users care for their house plants',
-    site: 'n/a',
-    description: [
-      'n/a'
     ]
     },
   ]);
