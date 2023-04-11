@@ -8,7 +8,6 @@ const Job = ({job}) => {
   <ul>
     {job.activities.map(activity => <li>{activity}</li>)}
   </ul>
-  <img src={Logo} className="placeholder" alt="placeholder"/>
 </div>
 }
 
