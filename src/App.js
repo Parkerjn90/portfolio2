@@ -38,13 +38,56 @@ function App() {
     },
   ]);
 
+  const [experience] = useState([
+    {jobTitle: 'Lead Software Engineer Immersive Resident',
+    company: 'Galvanize Inc.',
+    dateEmployed: 'Jul 2022 - Jan 2023',
+    activities: [
+      'Instructed 100+ junior engineers in JavaScript, React, Node.js, and Database Management Systems',
+      'Conducted daily code review to help students solidify CS concepts and discuss potential optimizations',
+      'Refactored the Hack Reactor curriculum in collaboration with other engineers and educators',
+      'Managed a diverse team of Software Engineering Immersive Residents to analyze student progress and ensure future success',
+      'Contributed to academic curriculum codebase and led retrospectives for 40+ engineers on a weekly basis',
+      'Interviewed, hired, and trained new software developers',
+      'Established company-wide standard practices by creating and implementing new documents, resulting in increased efficiency and consistency in student support'
+      ],
+    },
+    {jobTitle: 'Clinical Screening Specialist',
+      company: 'CastleBranch',
+      dateEmployed: 'Jun 2020 - Feb 2022',
+      activities: [
+        'Cross-trained in proprietary software to direct incoming documents to the appropriate department and assign documentation submitted by email to the correct student accounts',
+        'Promoted from Tier 1 to Tier 2 level reviewer within 4 months of completing training'
+      ],
+    },
+    {jobTitle: 'French Teacher, Yearbook, Testing Coordinator, Department Chair',
+        company: 'Graham High School',
+        dateEmployed: 'Aug 2015 - Jun 2020',
+        activities: [
+          'Designed daily lessons for students at various levels of competency in the French language',
+          'Trained teachers in national/state-wide testing practices to maintain student confidentiality and increase percent of students tested for the school',
+          'Trained other teachers in educational technology to increase student engagement and skill-retention'
+        ],
+    },
+    {jobTitle: 'French Teacher',
+      company: 'Fred T. Foard High School',
+      dateEmployed: 'Jan 2013 - Jun 2015',
+      activities: [
+        'Designed daily lessons for students at various levels of competency in the French language',
+        'Trained self and other teachers in Google Suite technologies',
+        'Integrated technology into the classroom on a weekly basis',
+        'Cultivated a caring and inclusive community within the classroom and throughout the school'
+      ],
+    },
+  ]);
+
   return (
     <div className="App main-box">
       <header className="App-header">
         <Header></Header>
         <Info></Info>
         <Experience projects={projects}></Experience>
-        <Jobs></Jobs>
+        <Jobs experience={experience}></Jobs>
         <InTheWorks></InTheWorks>
       </header>
     </div>
