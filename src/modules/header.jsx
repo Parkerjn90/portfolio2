@@ -1,5 +1,5 @@
 import React from 'react';
-import Portrait from '../Me.jpeg';
+import Portrait from '../assets/Me.jpeg';
 
 const Header = () => {
   return <div>

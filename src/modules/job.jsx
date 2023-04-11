@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../logo.svg';
 
 const Job = ({job}) => {
   return <div className="flex-box-1">
