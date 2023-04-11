@@ -84,7 +84,15 @@ function App() {
     },
   ]);
 
-  const []
+  const [projects] = useState({
+    projectTitle: 'PokePlanner',
+    projectDescription: `This past fall, I started playing pokemon again for the first time in maybe 20 years.
+    It&apos;s safe to say there are way more pokemon now than there were when I was 12. I decided to build myself
+    a little app to help me keep track of the various bits of information I needed to know about each animal so
+    that I could more effectively play the game. So far, I've taken a lot of time to really plan out the app.
+    Here's some of what I have so far.`,
+    projectGifs: ['https://i.ibb.co/Q66TLLG/Screenshot-2023-04-11-at-2-01-14-PM.png', 'https://i.ibb.co/Pggx6M7/Screenshot-2023-04-11-at-2-00-54-PM.png'],
+  });
 
   return (
     <div className="App main-box">
@@ -93,7 +101,7 @@ function App() {
         <Info></Info>
         <Experience experience={experience}></Experience>
         <Jobs jobs={jobs}></Jobs>
-        <InTheWorks></InTheWorks>
+        <InTheWorks projects={projects}></InTheWorks>
       </header>
     </div>
   );
