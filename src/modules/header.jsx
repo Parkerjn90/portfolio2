@@ -13,7 +13,7 @@ const Header = () => {
       </p>
     </div>
     <div className="header-flex-1/3">
-      <img className="me" src={Portrait} alt="self-portrait of Joy Parker"/>
+      <img className="me" src='https://i.ibb.co/93Bpmjt/Profile-Main.png' alt="self-portrait of Joy Parker"/>
     </div>
   </div>
 }
