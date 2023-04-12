@@ -1,7 +1,7 @@
-import {React, useState} from 'react';
-import './App.css';
-import {CssVarsProvider} from '@mui/joy/styles';
-import Sheet from '@mui/joy/Sheet';
+import { React, useState } from 'react';
+// import './App.css';
+import { ThemeProvider, Box, createTheme } from '@mui/system';
+// import { Box } from '@mui/joy';
 import Header from './modules/header.jsx';
 import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
@@ -9,6 +9,24 @@ import Jobs from './modules/jobs.jsx';
 import InTheWorks from './modules/inTheWorks.jsx';
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      background: {
+        paper: 'url("https://i.ibb.co/93Bpmjt/Profile-Main.png")',
+      },
+      text: {
+        primary: '#173A5E',
+        secondary: '#46505A',
+      },
+      action: {
+        active: '#001E3C',
+      },
+      success: {
+        dark: '#009688',
+      },
+    },
+  });
 
   const [experience] = useState([
     {title: 'Questions and Answers Service',
@@ -97,17 +115,20 @@ function App() {
   });
 
   return (
-    <CssVarsProvider>
-        <Sheet variant="outlined">
-          <header className="App-header">
-            <Header></Header>
-            <Info></Info>
-            <Experience experience={experience}></Experience>
-            <Jobs jobs={jobs}></Jobs>
-            <InTheWorks projects={projects}></InTheWorks>
-          </header>
-        </Sheet>
-      </CssVarsProvider>
+    <ThemeProvider theme={theme}>
+      <Box variant="outlined" m="auto">
+        <Box variant="outlined" >
+        <header className="App-header">
+          <Header></Header>
+          <Info></Info>
+          <Experience experience={experience}></Experience>
+          <Jobs jobs={jobs}></Jobs>
+          <InTheWorks projects={projects}></InTheWorks>
+        </header>
+        </Box>
+      </Box>
+    </ThemeProvider>
+
   );
 }
 
