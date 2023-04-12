@@ -1,5 +1,7 @@
 import {React, useState} from 'react';
 import './App.css';
+import {CssVarsProvider} from '@mui/joy/styles';
+import Sheet from '@mui/joy/Sheet';
 import Header from './modules/header.jsx';
 import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
@@ -95,15 +97,17 @@ function App() {
   });
 
   return (
-    <div className="App main-box">
-      <header className="App-header">
-        <Header></Header>
-        <Info></Info>
-        <Experience experience={experience}></Experience>
-        <Jobs jobs={jobs}></Jobs>
-        <InTheWorks projects={projects}></InTheWorks>
-      </header>
-    </div>
+    <CssVarsProvider>
+        <Sheet variant="outlined">
+          <header className="App-header">
+            <Header></Header>
+            <Info></Info>
+            <Experience experience={experience}></Experience>
+            <Jobs jobs={jobs}></Jobs>
+            <InTheWorks projects={projects}></InTheWorks>
+          </header>
+        </Sheet>
+      </CssVarsProvider>
   );
 }
 
