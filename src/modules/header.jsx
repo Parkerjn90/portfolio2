@@ -1,5 +1,4 @@
 import React from 'react';
-import Portrait from '../assets/Me.jpeg';
 
 const Header = () => {
   return <div>

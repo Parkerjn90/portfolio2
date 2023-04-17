@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../assets/logo.svg';
 
 const Project = ({project}) => {
   return <div className="flex-box-1">
