@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 // import './App.css';
 // import { ThemeProvider, Box, createTheme } from '@mui/system';
 // import Grid from '@mui/joy/Grid';
+import { Container, AppBar } from '@mui/material';
 import Header from './modules/header.jsx';
 import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
@@ -104,17 +105,17 @@ function App() {
   });
 
   return (
-    <div className="main">
-      <div className="header"><Header></Header></div>
-      <div className="content">
-        <div className="inner">
+    <>
+      <AppBar className="header" position="sticky" sx={{ backgroundColor: "#214028" }} alignItems="center"><Header></Header></AppBar>
+      <Container maxWidth="lg" alignItems="center">
+        <div className="content">
           <div id="info"><Info></Info></div>
           <div id="experience"><Experience experience={experience}></Experience></div>
           <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
           <div id="works"><InTheWorks projects={projects}></InTheWorks></div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </>
   );
 }
 
