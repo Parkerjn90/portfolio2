@@ -3,7 +3,7 @@ import Grid from '@mui/joy/Grid';
 
 const Header = () => {
   return (
-    <div className="header">
+    // <div className="header">
       <div className="innerHeader">
         <Grid container spacing={0} sx={{ flexGrow: 1 }}>
           <Grid xs={8}>
@@ -20,7 +20,7 @@ const Header = () => {
           </Grid>
         </Grid>
       </div>
-    </div>
+    // </div>
   )
 }
 

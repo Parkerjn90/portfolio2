@@ -104,9 +104,9 @@ function App() {
   });
 
   return (
-    <>
-      <Header></Header>
-      <div className="main">
+    <div className="main">
+      <div className="header"><Header></Header></div>
+      <div className="content">
         <div className="inner">
           <div id="info"><Info></Info></div>
           <div id="experience"><Experience experience={experience}></Experience></div>
@@ -114,7 +114,7 @@ function App() {
           <div id="works"><InTheWorks projects={projects}></InTheWorks></div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
