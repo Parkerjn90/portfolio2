@@ -1,6 +1,11 @@
 import React from 'react';
+import Grid from '@mui/joy/Grid';
+import { useTheme } from '@mui/material/styles';
 
 const Info = () => {
+
+  const theme = useTheme();
+
   return <div className="flex-box-1">
     <h2>Info</h2>
     <div className="inner-text">
