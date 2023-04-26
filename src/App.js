@@ -1,9 +1,6 @@
 import { React, useState } from 'react';
-// import './App.css';
-// import { ThemeProvider, Box, createTheme } from '@mui/system';
-// import Grid from '@mui/joy/Grid';
-import { Container, AppBar, Button } from '@mui/material';
-import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { Container, AppBar, Toolbar } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Header from './modules/header.jsx';
 import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
@@ -140,9 +137,10 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <AppBar className="header" position="sticky" sx={{ backgroundColor: `${theme.palette.fifth.main}`, borderRadius: "0 0 15px 15px", padding: "15px" }}>
-          <Header></Header>
+          <Header style={{margin: "auto"}}></Header>
+          <Toolbar></Toolbar>
         </AppBar>
-        <Container maxWidth="lg" alignItems="center" sx={{backgroundColor: `${theme.palette.primary.main}`, padding: "15px", paddingTop: "30px"}}>
+        <Container maxWidth="lg" alignItems="center" sx={{backgroundColor: `${theme.palette.primary.main}aa`, padding: "15px", paddingTop: "30px"}}>
           <div className="content">
             <div id="info"><Info></Info></div>
             <div id="experience"><Experience experience={experience}></Experience></div>
