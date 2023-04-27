@@ -14,7 +14,7 @@ const Header = () => {
         <Grid xs={9.5} md={7} lg={4}>
           <h1 className="name" style={{ font: 'bold 80px "Gentium Book Plus"', color: `${theme.palette.secondary.main}`, textAlign: "left"}}>Joy Parker &#32;
           </h1><h1
-            className="subtitle" style={{ font: "bold 30px 'Cedarville Cursive'", color: `${theme.palette.third.main}`, margin: "auto", textAlign: "left"}}>
+            className="subtitle" style={{ font: "bold 25px 'Cedarville Cursive'", color: `${theme.palette.third.main}`, margin: "auto", textAlign: "left"}}>
             &#32; - Full Stack Software Developer
           </h1>
         </Grid>
