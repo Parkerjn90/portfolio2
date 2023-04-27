@@ -1,13 +1,24 @@
 import React from 'react';
-import { Grid } from '@mui/joy/Grid'
+import Grid from '@mui/joy/Grid';
+import { useTheme } from '@mui/material/styles';
 import Project from './project.jsx';
 
-const Experience = ({experience}) => {
+const Experience = ({ experience }) => {
 
-  return <div className="flex-box-1">
-    <h2>Experience</h2>
-    {experience.map((project, index) => <Project project={project} key={index}/>)}
-  </div>
+  const theme = useTheme();
+
+  return (
+    <Grid container style={{ padding: "10px", fontFamily: `${theme.typography.fontFamily}`, color: `${theme.palette.fifth.main}` }} spacing={2}>
+      <Grid>
+        <h2 style={{color: `${theme.palette.fourth.main}`, font: 'bold 30px "Cedarville Cursive"'}}>Past Projects</h2>
+      </Grid>
+      {experience.map((project, index) => (
+        <Grid>
+          <Project project={project} key={index} />
+        </Grid>
+      ))}
+    </Grid>
+  )
 }
 
 export default Experience;

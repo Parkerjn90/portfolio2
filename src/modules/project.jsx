@@ -1,12 +1,31 @@
 import React from 'react';
+import Grid from '@mui/joy/Grid';
+import { useTheme } from '@mui/material/styles';
 
-const Project = ({project}) => {
-  return <div className="flex-box-1">
-    <h4>{project.title}</h4><a href={project.site}>{project.site}</a>
-    <h5>{project.goal}</h5>
-    <p>{project.description}</p>
-    <img src={project.gif} className="placeholder" alt="placeholder"/>
-  </div>
+const Project = ({ project }) => {
+
+  const theme = useTheme();
+
+  return (
+    <>
+      <div>
+        <Grid container spacing={0}>
+          <Grid md={0}>
+          </Grid>
+          <Grid xs={9} md={7}>
+            <h4 style={{ fontSize: "25px", display: "inline", margin: "0 20px 10px 20px" }}>{project.title}</h4><a href={project.site} style={{ color: `${theme.palette.fourth.main}` }}>GitHub Link</a>
+            <h5 style={{ fontSize: "18px" }}>{project.goal}</h5>
+            <p>{project.description}</p>
+          </Grid>
+          <Grid xs={9} md={5} sx={{ width: "100px" }}>
+            <img src={project.gif} className="placeholder" alt="gif depicting what the website in question looks like and some of its functionality" style={{ width: "20em", display: "inline-block", float: "right", paddingRight: "10px"}} />
+          </Grid>
+          <Grid md={0}>
+          </Grid>
+        </Grid>
+      </div>
+    </>
+  )
 }
 
 export default Project;

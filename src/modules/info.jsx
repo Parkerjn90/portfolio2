@@ -7,7 +7,7 @@ const Info = () => {
   const theme = useTheme();
 
   return (
-    <Grid container style={{padding: "10px", fontFamily: "Gentium Book Plus", color:`${theme.palette.fifth.main}`}}>
+    <Grid container style={{padding: "10px", fontFamily: `${theme.typography.fontFamily}`, color:`${theme.palette.fifth.main}`}}>
       <Grid>
       <h2 style={{color: `${theme.palette.fourth.main}`, font: 'bold 30px "Cedarville Cursive"'}}>About Me</h2>
       </Grid>
