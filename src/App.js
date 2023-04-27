@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { Container, AppBar, Toolbar } from '@mui/material';
+import { Container, AppBar, Toolbar, Stack, Button } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Header from './modules/header.jsx';
 import Info from './modules/info.jsx';
@@ -29,8 +29,8 @@ function App() {
     },
     typography: {
       fontFamily: [
-        'Cedarville Cursive',
         'Gentium Book Plus',
+        'Cedarville Cursive',
         'source-code-pro',
         'Menlo', 'Monaco',
         'Consolas',
@@ -136,17 +136,26 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AppBar className="header" position="sticky" sx={{ backgroundColor: `${theme.palette.fifth.main}`, borderRadius: "0 0 15px 15px", padding: "15px" }}>
-          <Header style={{margin: "auto"}}></Header>
-          <Toolbar></Toolbar>
+        <AppBar className="header" position="sticky" sx={{ backgroundColor: `${theme.palette.fifth.main}`, borderRadius: "0 0 15px 15px", padding: "5px", scrollPaddingTop: "64px"}}>
+          <Header style={{ margin: "0 auto"}}></Header>
+          <Toolbar sx={{margin: "0 auto"}}>
+            <Stack direction="row" spacing={2}>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#info">About Me</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#experience">Past Projects</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#jobs">Work Experience</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#works">Current Projects</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}}>Contact Me</Button>
+            </Stack>
+          </Toolbar>
         </AppBar>
-        <Container maxWidth="lg" alignItems="center" sx={{backgroundColor: `${theme.palette.primary.main}aa`, padding: "15px", paddingTop: "30px"}}>
-          <div className="content">
+
+        <Container maxWidth="lg" alignItems="center" sx={{ backgroundColor: `${theme.palette.primary.main}aa`, padding: "15px", scrollPaddingTop: "30px" }}>
+          {/* <div className="content"> */}
             <div id="info"><Info></Info></div>
             <div id="experience"><Experience experience={experience}></Experience></div>
             <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
             <div id="works"><InTheWorks projects={projects}></InTheWorks></div>
-          </div>
+          {/* </div> */}
         </Container>
       </ThemeProvider>
     </>
