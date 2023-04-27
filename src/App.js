@@ -136,7 +136,9 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AppBar className="header" position="sticky" sx={{ backgroundColor: `${theme.palette.fifth.main}`, borderRadius: "0 0 15px 15px", padding: "5px", scrollPaddingTop: "64px"}}>
+        <Container maxWidth="lg" alignItems="center" scrollPaddingTop={64}>
+          <AppBar className="header" position="sticky" sx={{
+            backgroundColor: `${theme.palette.fifth.main}`, padding: "5px", paddingRight: "20px"}}>
           <Header style={{ margin: "0 auto"}}></Header>
           <Toolbar sx={{margin: "0 auto"}}>
             <Stack direction="row" spacing={2}>
@@ -149,15 +151,14 @@ function App() {
           </Toolbar>
         </AppBar>
 
-        <Container maxWidth="lg" alignItems="center" sx={{ backgroundColor: `${theme.palette.primary.main}aa`, padding: "15px", scrollPaddingTop: "30px" }}>
-          {/* <div className="content"> */}
-            <div id="info"><Info></Info></div>
-            <div id="experience"><Experience experience={experience}></Experience></div>
-            <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
-            <div id="works"><InTheWorks projects={projects}></InTheWorks></div>
-          {/* </div> */}
-        </Container>
-      </ThemeProvider>
+        <div className="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "15px", scrollPaddingTop: "30px" }}>
+          <div id="info"><Info></Info></div>
+          <div id="experience"><Experience experience={experience}></Experience></div>
+          <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
+          <div id="works"><InTheWorks projects={projects}></InTheWorks></div>
+        </div>
+      </Container>
+    </ThemeProvider>
     </>
   );
 }
