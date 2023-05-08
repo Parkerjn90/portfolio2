@@ -13,7 +13,7 @@ const Jobs = ({ jobs }) => {
       <h2 style={{color: `${theme.palette.fourth.main}`, font: 'bold 30px "Cedarville Cursive"'}}>Professional Experience</h2>
       {jobs.map((job, index) => (
         <div style={{marginBottom: "15px"}}>
-          <Job job={job} key={index} />
+          <Job job={job} key={index+.1} />
         </div>
       ))}
     </div>

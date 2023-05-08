@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Container, AppBar, Toolbar, Stack, Button } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Header from './modules/header.jsx';
@@ -8,6 +8,21 @@ import Jobs from './modules/jobs.jsx';
 import InTheWorks from './modules/inTheWorks.jsx';
 
 function App() {
+
+  const [appBarHeight, setAppBarHeight] = useState();
+
+  useEffect(() => {
+    let newHeight = document.getElementById("header").offsetHeight;
+    setAppBarHeight(newHeight + 10);
+  }, []);
+
+  const scrollToView = (e) => {
+    e.preventDefault();
+   const element = document.getElementById(e.target.value);
+   element.scrollIntoView({
+    behavior:'smooth',
+   })
+  }
 
   let theme = createTheme({
     palette: {
@@ -136,22 +151,22 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Container maxWidth="lg" alignItems="center" scrollPaddingTop={64}>
-          <AppBar className="header" position="sticky" sx={{
-            backgroundColor: `${theme.palette.fifth.main}`, padding: "5px", paddingRight: "20px"}}>
+        <Container maxWidth="lg" alignItems="center">
+          <AppBar id="header" position="sticky" sx={{
+            backgroundColor: `${theme.palette.fifth.main}`, padding: "5px", paddingRight: "20px" }}>
           <Header style={{ margin: "0 auto"}}></Header>
           <Toolbar sx={{margin: "0 auto"}}>
             <Stack direction="row" spacing={2}>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#info">About Me</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#experience">Past Projects</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="#info" onClick={scrollToView}>About Me</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}}>Past Projects</Button>
               <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#jobs">Work Experience</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#works">Current Projects</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}}>Current Projects</Button>
               <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}}>Contact Me</Button>
             </Stack>
           </Toolbar>
         </AppBar>
 
-        <div className="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "15px", scrollPaddingTop: "30px" }}>
+        <div id="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "0 15px" }}>
           <div id="info"><Info></Info></div>
           <div id="experience"><Experience experience={experience}></Experience></div>
           <div id="jobs"><Jobs jobs={jobs}></Jobs></div>

@@ -11,7 +11,7 @@ const Job = ({ job }) => {
       <Stack>
         <Grid container justifyContent="space-between" style={{fontSize: "18px"}}>
           <Grid xs={12} md={5}>
-            <h4>{job.jobTitle}</h4>
+            <h3>{job.jobTitle}</h3>
           </Grid>
           <Grid xs={12} md={3} textAlign="center">
             <h4>{job.company}</h4>

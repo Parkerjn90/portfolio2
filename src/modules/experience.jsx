@@ -13,8 +13,8 @@ const Experience = ({ experience }) => {
         <h2 style={{color: `${theme.palette.fourth.main}`, font: 'bold 30px "Cedarville Cursive"'}}>Past Projects</h2>
       </Grid>
       {experience.map((project, index) => (
-        <Grid>
-          <Project project={project} key={index} />
+        <Grid key={index}>
+          <Project project={project}/>
         </Grid>
       ))}
     </Grid>
