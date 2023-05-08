@@ -9,19 +9,24 @@ import InTheWorks from './modules/inTheWorks.jsx';
 
 function App() {
 
-  const [appBarHeight, setAppBarHeight] = useState();
+  const [showAbout, setAbout] = useState(true);
+  const [showProjects, setProjects] = useState(false);
+  const [showExperience, setExperience] = useState(false);
+  const [showCurrent, setCurrent] = useState(false);
+  const [showContact, setContact] = useState(false);
 
-  useEffect(() => {
-    let newHeight = document.getElementById("header").offsetHeight;
-    setAppBarHeight(newHeight + 10);
-  }, []);
+  useEffect(()=> {}, [showAbout])
 
-  const scrollToView = (e) => {
+  const changeContent = (e) => {
     e.preventDefault();
-   const element = document.getElementById(e.target.value);
-   element.scrollIntoView({
-    behavior:'smooth',
-   })
+    setAbout(false);
+    setProjects(false);
+    setExperience(false);
+    setCurrent(false);
+    setContact(false);
+    let newFunction = eval(e.target.value)
+    // console.log(newFunction(true));
+    newFunction(true);
   }
 
   let theme = createTheme({
@@ -157,20 +162,20 @@ function App() {
           <Header style={{ margin: "0 auto"}}></Header>
           <Toolbar sx={{margin: "0 auto"}}>
             <Stack direction="row" spacing={2}>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="#info" onClick={scrollToView}>About Me</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}}>Past Projects</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} href="#jobs">Work Experience</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}}>Current Projects</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}}>Contact Me</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setAbout" onClick={changeContent}>About</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setProjects" onClick={changeContent}>Past Projects</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setExperience" onClick={changeContent}>Work Experience</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setCurrent" onClick={changeContent}>Current Projects</Button>
+              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setContact" onClick={changeContent}>Contact</Button>
             </Stack>
           </Toolbar>
         </AppBar>
 
         <div id="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "0 15px" }}>
-          <div id="info"><Info></Info></div>
-          <div id="experience"><Experience experience={experience}></Experience></div>
-          <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
-          <div id="works"><InTheWorks projects={projects}></InTheWorks></div>
+            {showAbout && <div id="info"><Info></Info></div>}
+            {showProjects && <div id="experience"><Experience experience={experience}></Experience></div>}
+            {showExperience && <div id="jobs"><Jobs jobs={jobs}></Jobs></div>}
+            {showCurrent && <div id="works"><InTheWorks projects={projects}></InTheWorks></div>}
         </div>
       </Container>
     </ThemeProvider>
