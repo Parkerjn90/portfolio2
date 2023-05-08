@@ -6,6 +6,7 @@ import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
 import Jobs from './modules/jobs.jsx';
 import InTheWorks from './modules/inTheWorks.jsx';
+import Contact from './modules/contact.jsx';
 
 function App() {
 
