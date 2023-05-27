@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Container, AppBar, Toolbar, Stack, Button } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Login from './modules/login.jsx';
 import Header from './modules/header.jsx';
 import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
@@ -10,13 +11,19 @@ import Contact from './modules/contact.jsx';
 
 function App() {
 
+  const [login, setLogin] = useState(true);
   const [showAbout, setAbout] = useState(true);
   const [showProjects, setProjects] = useState(false);
   const [showExperience, setExperience] = useState(false);
   const [showCurrent, setCurrent] = useState(false);
   const [showContact, setContact] = useState(false);
 
-  useEffect(()=> {}, [showAbout])
+  useEffect(() => { }, [showAbout])
+
+  const showLogin = (e) => {
+    e.preventDefault();
+    setLogin(!login);
+  }
 
   const changeContent = (e) => {
     e.preventDefault();
@@ -26,7 +33,6 @@ function App() {
     setCurrent(false);
     setContact(false);
     let newFunction = eval(e.target.value)
-    // console.log(newFunction(true));
     newFunction(true);
   }
 
@@ -159,27 +165,31 @@ function App() {
       <ThemeProvider theme={theme}>
         <Container maxWidth="lg" alignItems="center">
           <AppBar id="header" position="sticky" sx={{
-            backgroundColor: `${theme.palette.fifth.main}`, padding: "5px", paddingRight: "20px" }}>
-          <Header style={{ margin: "0 auto"}}></Header>
-          <Toolbar sx={{margin: "0 auto"}}>
-            <Stack direction="row" spacing={2}>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setAbout" onClick={changeContent}>About</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setProjects" onClick={changeContent}>Past Projects</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setExperience" onClick={changeContent}>Work Experience</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setCurrent" onClick={changeContent}>Current Projects</Button>
-              <Button sx={{backgroundColor: `${theme.palette.fourth.main}`}} value="setContact" onClick={changeContent}>Contact</Button>
-            </Stack>
-          </Toolbar>
-        </AppBar>
+            backgroundColor: `${theme.palette.fifth.main}`, padding: "5px", paddingRight: "20px"
+          }}>
+            <Header style={{ margin: "0 auto" }}></Header>
+            <Toolbar sx={{ margin: "0 auto" }}>
+              <Stack direction="row" spacing={2}>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setAbout" onClick={changeContent}>About</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setProjects" onClick={changeContent}>Past Projects</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setExperience" onClick={changeContent}>Work Experience</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setCurrent" onClick={changeContent}>Current Projects</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setContact" onClick={changeContent}>Contact</Button>
+              </Stack>
+            </Toolbar>
+          </AppBar>
 
-        <div id="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "0 15px" }}>
+          <div id="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "0 15px" }}>
+            {login && <Login id="login" showLogin={showLogin} style={{ position: "absolute", zIndex: "2" }}></Login>}
             {showAbout && <div id="info"><Info></Info></div>}
             {showProjects && <div id="experience"><Experience experience={experience}></Experience></div>}
             {showExperience && <div id="jobs"><Jobs jobs={jobs}></Jobs></div>}
             {showCurrent && <div id="works"><InTheWorks projects={projects}></InTheWorks></div>}
-        </div>
-      </Container>
-    </ThemeProvider>
+            <Contact></Contact>
+          </div>
+          <Button onClick={showLogin}>Login</Button>
+        </Container>
+      </ThemeProvider>
     </>
   );
 }
