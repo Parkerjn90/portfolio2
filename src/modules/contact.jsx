@@ -36,7 +36,6 @@ const Contact = () => {
           <h3>Your Name</h3>
           <input
             type="text"
-            name="from_name"
             placeholder="Your name"
             value={toSend.from_name}
             onChange={handleChange}
@@ -44,15 +43,14 @@ const Contact = () => {
           <h3>Your Email</h3>
           <input
             type="email"
-            name="reply_to"
-            placeholder="How can I contact you?"
+            placeholder="How can I reply to you?"
             value={toSend.reply_to}
             onChange={handleChange}
+            required
           />
           <h3>Your Message</h3>
           <input
             type="textarea"
-            name="message"
             placeholder="What would you like me to know about the position?"
             value={toSend.message}
             onChange={handleChange}

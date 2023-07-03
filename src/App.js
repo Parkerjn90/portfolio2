@@ -12,29 +12,13 @@ import Contact from './modules/contact.jsx';
 function App() {
 
   const [login, setLogin] = useState(true);
-  const [showAbout, setAbout] = useState(true);
-  const [showProjects, setProjects] = useState(false);
-  const [showExperience, setExperience] = useState(false);
-  const [showCurrent, setCurrent] = useState(false);
-  const [showContact, setContact] = useState(false);
 
-  useEffect(() => { }, [showAbout])
 
   const showLogin = (e) => {
     e.preventDefault();
     setLogin(!login);
   }
 
-  const changeContent = (e) => {
-    e.preventDefault();
-    setAbout(false);
-    setProjects(false);
-    setExperience(false);
-    setCurrent(false);
-    setContact(false);
-    let newFunction = eval(e.target.value)
-    newFunction(true);
-  }
 
   let theme = createTheme({
     palette: {
@@ -170,21 +154,21 @@ function App() {
             <Header style={{ margin: "0 auto" }}></Header>
             <Toolbar sx={{ margin: "0 auto" }}>
               <Stack direction="row" spacing={2}>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setAbout" onClick={changeContent}>About</Button>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setProjects" onClick={changeContent}>Past Projects</Button>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setExperience" onClick={changeContent}>Work Experience</Button>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setCurrent" onClick={changeContent}>Current Projects</Button>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} value="setContact" onClick={changeContent}>Contact</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >About</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Past Projects</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Work Experience</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Current Projects</Button>
+                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Contact</Button>
               </Stack>
             </Toolbar>
           </AppBar>
 
           <div id="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "0 15px" }}>
-            {login && <Login id="login" showLogin={showLogin} style={{ position: "absolute", zIndex: "2" }}></Login>}
-            {showAbout && <div id="info"><Info></Info></div>}
-            {showProjects && <div id="experience"><Experience experience={experience}></Experience></div>}
-            {showExperience && <div id="jobs"><Jobs jobs={jobs}></Jobs></div>}
-            {showCurrent && <div id="works"><InTheWorks projects={projects}></InTheWorks></div>}
+            <Login id="login" showLogin={showLogin} style={{ position: "absolute", zIndex: "2" }}></Login>
+            <div id="info"><Info></Info></div>
+            <div id="experience"><Experience experience={experience}></Experience></div>
+            <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
+            <div id="works"><InTheWorks projects={projects}></InTheWorks></div>
             <Contact></Contact>
           </div>
           <Button onClick={showLogin}>Login</Button>

@@ -25,7 +25,7 @@ const Header = () => {
         <Grid md={10} lg={4.5}>
         <p style={{ color: `${theme.palette.primary.main}`, font: '15px "Gentium Book Plus"', margin: "10px auto" }}>
           Front End | JavaScript (ES5 and ES6), React, HTML5, CSS3, Styled-Components, SASS, Axios, AJAX, jQuery, MaterialUI <br />
-          Back End | Node.js, Express, MySQL, SQLite, MongoDB, Mongoose, PostgreSQL, PGAdmin, RESTful API Development<br />
+          Back End | Node.js, Express, MySQL, SQLite, MongoDB, Mongoose, PostgreSQL, RESTful API Development, Python<br />
           Testing/Deployment | Jest, Mocha, Chai, AWS: EC2<br />
           Developer Tools | Vim, Git, npm, yarn, Webpack, Babel, Postman
         </p>
