@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { send } from 'emailjs-com';
+import axios from 'axios';
 import { Grid, Stack } from '@mui/joy'
 import { useTheme } from '@mui/material/styles';
 // import * as dotenv from 'dotenv';
@@ -9,17 +9,26 @@ import { useTheme } from '@mui/material/styles';
 const Contact = () => {
 
   const [toSend, setToSend] = useState({
-    from_name: '',
-    to_name: 'Joy',
+    name: '',
+    subject: '',
     message: '',
-    reply_to: '',
+    email: '',
   });
 
   const onSubmit = (e) => {
-    e.preventDefault();
-    send(
-      process.env.SERVICEID,
-    )
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    axios.post('https://formsubmit.co/ajax/joyparker1690@gmail.com', {
+      name: toSend.name,
+      subject: toSend.subject,
+      message: toSend.message,
+      replyto: toSend.email,
+    })
+      .then(res => {
+        console.log(res);
+        for (let key in toSend) {
+          setToSend({ ...toSend, [key]: '' })
+        }
+      })
   };
 
   const handleChange = (e) => {
@@ -33,29 +42,48 @@ const Contact = () => {
       <div style={{ padding: "10px", fontFamily: `${theme.typography.fontFamily}`, color: `${theme.palette.fifth.main}` }}>
         <h2 style={{ color: `${theme.palette.fourth.main}`, font: 'bold 30px "Cedarville Cursive"' }}>Contact Me</h2>
         <Stack container style={{ fontSize: "18px" }} spacing={2}>
-          <h3>Your Name</h3>
-          <input
-            type="text"
-            placeholder="Your name"
-            value={toSend.from_name}
-            onChange={handleChange}
-          />
-          <h3>Your Email</h3>
-          <input
-            type="email"
-            placeholder="How can I reply to you?"
-            value={toSend.reply_to}
-            onChange={handleChange}
-            required
-          />
-          <h3>Your Message</h3>
-          <input
-            type="textarea"
-            placeholder="What would you like me to know about the position?"
-            value={toSend.message}
-            onChange={handleChange}
-          />
-          <button type="submit">Send</button>
+          <form>
+            <h3>Your Name</h3>
+            <input
+              type="text"
+              name="name"
+              size="64"
+              placeholder="Your name"
+              value={toSend.name}
+              onChange={handleChange}
+            />
+            <h3>Your Email</h3>
+            <input
+              type="email"
+              name="email"
+              size="64"
+              required
+              placeholder="How can I reply to you?"
+              value={toSend.email}
+              onChange={handleChange}
+            />
+            <h3>Subject</h3>
+            <input
+              type="text"
+              name="subject"
+              size="64"
+              placeholder="Subject Line"
+              value={toSend.subject}
+              onChange={handleChange}
+            />
+            <h3>Your Message</h3>
+            <textarea
+              type="textarea"
+              name="message"
+              cols="55"
+              rows="10"
+              placeholder="Please add your message here"
+              value={toSend.message}
+              onChange={handleChange}
+            >
+            </textarea>
+            <button type="submit" onSubmit={onSubmit}>Send</button>
+          </form>
         </Stack>
       </div>
 
