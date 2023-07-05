@@ -1,6 +1,6 @@
-#Welcome to my Portfolio
+# Welcome to my Portfolio
 
-##Get Started
+## Get Started
 
 ### `npm start`
 
