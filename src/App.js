@@ -1,8 +1,10 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
+import Scroll from 'react-scroll-to-element';
 import { Container, AppBar, Toolbar, Stack, Button } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Login from './modules/login.jsx';
+// import Login from './modules/login.jsx';
 import Header from './modules/header.jsx';
+import Thanks from './modules/thanks.jsx';
 import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
 import Jobs from './modules/jobs.jsx';
@@ -11,12 +13,17 @@ import Contact from './modules/contact.jsx';
 
 function App() {
 
-  const [login, setLogin] = useState(true);
+  // const [login, setLogin] = useState(true);
+  const [thanks, setThanks] = useState(false);
 
 
-  const showLogin = (e) => {
-    e.preventDefault();
-    setLogin(!login);
+  // const showLogin = (e) => {
+  //   e.preventDefault();
+  //   setLogin(!login);
+  // }
+
+  const showThanks = () => {
+    setThanks(!thanks);
   }
 
 
@@ -154,24 +161,25 @@ function App() {
             <Header style={{ margin: "0 auto" }}></Header>
             <Toolbar sx={{ margin: "0 auto" }}>
               <Stack direction="row" spacing={2}>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >About</Button>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Past Projects</Button>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Work Experience</Button>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Current Projects</Button>
-                <Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Contact</Button>
+                <Scroll type="id" element="info" offset={-220}><Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >About</Button></Scroll>
+                <Scroll type="id" element="experience" offset={-220}><Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Past Projects</Button></Scroll>
+                <Scroll type="id" element="jobs" offset={-220}><Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Work Experience</Button></Scroll>
+                {/* <Scroll type="id" element="works" offset={-220}><Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Current Projects</Button></Scroll> */}
+                <Scroll type="id" element="contact" offset={-220}><Button sx={{ backgroundColor: `${theme.palette.fourth.main}` }} >Contact</Button></Scroll>
               </Stack>
             </Toolbar>
           </AppBar>
 
           <div id="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "0 15px" }}>
-            <Login id="login" showLogin={showLogin} style={{ position: "absolute", zIndex: "2" }}></Login>
+            {/* <Login id="login" showLogin={showLogin} style={{ position: "absolute", zIndex: "2" }}></Login> */}
             <div id="info"><Info></Info></div>
             <div id="experience"><Experience experience={experience}></Experience></div>
             <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
-            <div id="works"><InTheWorks projects={projects}></InTheWorks></div>
-            <Contact></Contact>
+            {/* <div id="works"><InTheWorks projects={projects}></InTheWorks></div> */}
+            <div id="contact">{thanks ? <Thanks showThanks={showThanks}></Thanks> : <Contact showThanks={showThanks}></Contact>}</div>
+            {/* {thanks && } */}
           </div>
-          <Button onClick={showLogin}>Login</Button>
+          {/* <Button onClick={showLogin}>Login</Button> */}
         </Container>
       </ThemeProvider>
     </>
