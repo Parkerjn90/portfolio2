@@ -9,7 +9,7 @@ const Info = () => {
   return (
     <Grid container style={{padding: "10px", fontFamily: `${theme.typography.fontFamily}`, color:`${theme.palette.fifth.main}`}}>
       <Grid>
-      <h2 style={{color: `${theme.palette.fourth.main}`, font: 'bold 50px "Gentium Book Plus"'}}>About Me</h2>
+      <h2 style={{color: `${theme.palette.fourth.main}`, font: 'bold 50px "Cedarville Cursive"'}}>About Me</h2>
       </Grid>
       <Grid>
       <div className="inner-text">

@@ -1,12 +1,13 @@
 import { React, useState } from 'react';
 import axios from 'axios';
-import { Grid, Stack } from '@mui/joy'
+import { Grid, Stack } from '@mui/joy';
+import { Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 // import * as dotenv from 'dotenv';
 // dotenv.config()
 
 
-const Contact = () => {
+const Contact = ({ showThanks }) => {
 
   const [toSend, setToSend] = useState({
     name: '',
@@ -15,7 +16,14 @@ const Contact = () => {
     email: '',
   });
 
+  const openThanks = (e) => {
+    e.preventDefault();
+    showThanks();
+  }
+
   const onSubmit = (e) => {
+    e.preventDefault();
+    openThanks(e)
     axios.defaults.headers.post['Content-Type'] = 'application/json';
     axios.post('https://formsubmit.co/ajax/joyparker1690@gmail.com', {
       name: toSend.name,
@@ -24,7 +32,6 @@ const Contact = () => {
       replyto: toSend.email,
     })
       .then(res => {
-        console.log(res);
         for (let key in toSend) {
           setToSend({ ...toSend, [key]: '' })
         }
@@ -82,7 +89,7 @@ const Contact = () => {
               onChange={handleChange}
             >
             </textarea>
-            <button type="submit" onSubmit={onSubmit}>Send</button>
+            <Button type="submit" onClick={onSubmit} sx={{fontWeight: 'bold', fontSize: '20px', color: `${theme.palette.fifth.main}`, display: "block"}}>Send</Button>
           </form>
         </Stack>
       </div>
