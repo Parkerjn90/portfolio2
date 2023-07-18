@@ -8,14 +8,21 @@ import Thanks from './modules/thanks.jsx';
 import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
 import Jobs from './modules/jobs.jsx';
-import InTheWorks from './modules/inTheWorks.jsx';
+// import InTheWorks from './modules/inTheWorks.jsx';
 import Contact from './modules/contact.jsx';
+import Zoom from './modules/zoomIn.jsx';
 
 function App() {
 
   // const [login, setLogin] = useState(true);
   const [thanks, setThanks] = useState(false);
 
+  const [zoomOpen, setZoomOpen] = useState(false);
+  const [pic, setPic] = useState('');
+
+  const setZoomPic = (url) => {
+    setPic(url);
+  }
 
   // const showLogin = (e) => {
   //   e.preventDefault();
@@ -141,15 +148,15 @@ function App() {
     },
   ]);
 
-  const [projects] = useState({
-    projectTitle: 'PokePlanner',
-    projectDescription: `This past fall, I started playing pokemon again for the first time in maybe 20 years.
-    It&apos;s safe to say there are way more pokemon now than there were when I was 12. I decided to build myself
-    a little app to help me keep track of the various bits of information I needed to know about each animal so
-    that I could more effectively play the game. So far, I've taken a lot of time to really plan out the app.
-    Here's some of what I have so far.`,
-    projectGifs: ['https://i.ibb.co/Q66TLLG/Screenshot-2023-04-11-at-2-01-14-PM.png', 'https://i.ibb.co/Pggx6M7/Screenshot-2023-04-11-at-2-00-54-PM.png'],
-  });
+  // const [projects] = useState({
+  //   projectTitle: 'PokePlanner',
+  //   projectDescription: `This past fall, I started playing pokemon again for the first time in maybe 20 years.
+  //   It&apos;s safe to say there are way more pokemon now than there were when I was 12. I decided to build myself
+  //   a little app to help me keep track of the various bits of information I needed to know about each animal so
+  //   that I could more effectively play the game. So far, I've taken a lot of time to really plan out the app.
+  //   Here's some of what I have so far.`,
+  //   projectGifs: ['https://i.ibb.co/Q66TLLG/Screenshot-2023-04-11-at-2-01-14-PM.png', 'https://i.ibb.co/Pggx6M7/Screenshot-2023-04-11-at-2-00-54-PM.png'],
+  // });
 
   return (
     <>
@@ -173,12 +180,13 @@ function App() {
           <div id="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "0 15px" }}>
             {/* <Login id="login" showLogin={showLogin} style={{ position: "absolute", zIndex: "2" }}></Login> */}
             <div id="info"><Info></Info></div>
-            <div id="experience"><Experience experience={experience}></Experience></div>
+            <div id="experience"><Experience experience={experience} setZoomPic={setZoomPic}></Experience></div>
             <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
             {/* <div id="works"><InTheWorks projects={projects}></InTheWorks></div> */}
             <div id="contact">{thanks ? <Thanks showThanks={showThanks}></Thanks> : <Contact showThanks={showThanks}></Contact>}</div>
             {/* {thanks && } */}
           </div>
+            <div id="zoom"><Zoom></Zoom></div>
           {/* <Button onClick={showLogin}>Login</Button> */}
         </Container>
       </ThemeProvider>

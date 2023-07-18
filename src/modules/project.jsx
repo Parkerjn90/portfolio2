@@ -2,9 +2,13 @@ import React from 'react';
 import Grid from '@mui/joy/Grid';
 import { useTheme } from '@mui/material/styles';
 
-const Project = ({ project }) => {
+const Project = ({ project, setZoomPic }) => {
 
   const theme = useTheme();
+  const onClick = (e) => {
+    e.preventDefault();
+    setZoomPic(project.gif)
+  }
 
   return (
     <>
@@ -23,7 +27,11 @@ const Project = ({ project }) => {
             >GitHub Link
             </a>
             <h5 style={{ fontSize: "18px" }}>{project.goal}</h5>
-            <p>{project.description}</p>
+            <ul style={{ padding: "1em" }}>
+              {project.description.map(bullet => {
+                return <li>{bullet}</li>
+              })}
+              </ul>
           </Grid>
           <Grid xs={12} md={5} sx={{ width: "100px", display: "block" }}>
             <img

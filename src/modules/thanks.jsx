@@ -15,7 +15,7 @@ const Thanks = ({ showThanks }) => {
   return (
     <Grid container style={{padding: "10px", fontFamily: `${theme.typography.fontFamily}`, color:`${theme.palette.fifth.main}`}}>
       <Grid>
-      <h2 style={{color: `${theme.palette.fourth.main}`, fontSize: '30px'}}>Thanks for contacting me - I'll get back to you in 2-3 business days</h2>
+      <h2 style={{color: `${theme.palette.fourth.main}`, fontSize: '30px'}}>Thanks for contacting me!</h2>
       </Grid>
       <Grid
       sx={{}}>
