@@ -3,7 +3,7 @@ import Grid from '@mui/joy/Grid';
 import { useTheme } from '@mui/material/styles';
 import Project from './project.jsx';
 
-const Experience = ({ experience }) => {
+const Experience = ({ experience, setZoomPic }) => {
 
   const theme = useTheme();
 
@@ -14,7 +14,7 @@ const Experience = ({ experience }) => {
       </Grid>
       {experience.map((project, index) => (
         <Grid key={index}>
-          <Project project={project}/>
+          <Project project={project} setZoomPic={setZoomPic}/>
         </Grid>
       ))}
     </Grid>

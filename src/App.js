@@ -8,14 +8,28 @@ import Thanks from './modules/thanks.jsx';
 import Info from './modules/info.jsx';
 import Experience from './modules/experience.jsx';
 import Jobs from './modules/jobs.jsx';
-import InTheWorks from './modules/inTheWorks.jsx';
+// import InTheWorks from './modules/inTheWorks.jsx';
 import Contact from './modules/contact.jsx';
+import Zoom from './modules/zoomIn.jsx';
 
 function App() {
 
   // const [login, setLogin] = useState(true);
   const [thanks, setThanks] = useState(false);
 
+  const [zoomOpen, setZoomOpen] = useState(false);
+  const [pic, setPic] = useState('');
+
+  const setZoomPic = (url) => {
+    setPic(url);
+    setZoomOpen(true);
+  }
+
+  const closeZoom = (e) => {
+    e.preventDefault();
+    setPic('');
+    setZoomOpen(false);
+  }
 
   // const showLogin = (e) => {
   //   e.preventDefault();
@@ -23,6 +37,11 @@ function App() {
   // }
 
   const showThanks = () => {
+    setThanks(!thanks);
+  }
+
+  const closeThanks = (e) => {
+    e.preventDefault();
     setThanks(!thanks);
   }
 
@@ -62,7 +81,7 @@ function App() {
     {
       title: 'Questions and Answers Service',
       goal: 'Front-End clothing retail application',
-      site: 'github.com/Team-Pharos/FEC_Lighthouse',
+      site: 'http://github.com/Team-Pharos/FEC_Lighthouse',
       description: [
         'Implemented responsive search bar functionality within a  React component',
         'Optimized slow API response rate by compacting multiple Axios calls into one, resulting in five times more data returned in the same amount of time',
@@ -73,7 +92,7 @@ function App() {
     {
       title: 'E-commerce Product API',
       goal: 'Data migration and scaling',
-      site: 'github.com/Great-Blue-Herons/Product-Overview',
+      site: 'http://github.com/Great-Blue-Herons/Product-Overview',
       description: [
         'Designed schema in PostgreSQL to allow for efficient data migration',
         'Wrote queries within PGAdmin to quickly aggregate data resulting in an initial average of 346 requests per second',
@@ -84,7 +103,7 @@ function App() {
     {
       title: 'Games Collective',
       goal: 'Full-stack application to aggregate video games, manage personal lists, search database, and participate in related threads',
-      site: 'github.com/Jelly-Donut-Fish/GamesCollective',
+      site: 'http://github.com/Jelly-Donut-Fish/GamesCollective',
       description: [
         'Led a team of eight developers to create a multi-page, full-stack application for video game management',
         'Leveraged React, Redux, and Axios to allow users to manage collections and view detailed information',
@@ -141,22 +160,22 @@ function App() {
     },
   ]);
 
-  const [projects] = useState({
-    projectTitle: 'PokePlanner',
-    projectDescription: `This past fall, I started playing pokemon again for the first time in maybe 20 years.
-    It&apos;s safe to say there are way more pokemon now than there were when I was 12. I decided to build myself
-    a little app to help me keep track of the various bits of information I needed to know about each animal so
-    that I could more effectively play the game. So far, I've taken a lot of time to really plan out the app.
-    Here's some of what I have so far.`,
-    projectGifs: ['https://i.ibb.co/Q66TLLG/Screenshot-2023-04-11-at-2-01-14-PM.png', 'https://i.ibb.co/Pggx6M7/Screenshot-2023-04-11-at-2-00-54-PM.png'],
-  });
+  // const [projects] = useState({
+  //   projectTitle: 'PokePlanner',
+  //   projectDescription: `This past fall, I started playing pokemon again for the first time in maybe 20 years.
+  //   It&apos;s safe to say there are way more pokemon now than there were when I was 12. I decided to build myself
+  //   a little app to help me keep track of the various bits of information I needed to know about each animal so
+  //   that I could more effectively play the game. So far, I've taken a lot of time to really plan out the app.
+  //   Here's some of what I have so far.`,
+  //   projectGifs: ['https://i.ibb.co/Q66TLLG/Screenshot-2023-04-11-at-2-01-14-PM.png', 'https://i.ibb.co/Pggx6M7/Screenshot-2023-04-11-at-2-00-54-PM.png'],
+  // });
 
   return (
     <>
       <ThemeProvider theme={theme}>
         <Container maxWidth="lg" alignItems="center">
           <AppBar id="header" position="sticky" sx={{
-            backgroundColor: `${theme.palette.fifth.main}`, padding: "5px", paddingRight: "20px"
+            backgroundColor: `${theme.palette.fifth.main}`, padding: "5px", paddingRight: "20px", zIndex: 2
           }}>
             <Header style={{ margin: "0 auto" }}></Header>
             <Toolbar sx={{ margin: "0 auto" }}>
@@ -170,14 +189,47 @@ function App() {
             </Toolbar>
           </AppBar>
 
+          {zoomOpen && <div id="zoom"
+            onClick={closeZoom}
+            style={{
+              background: `${theme.palette.fifth.main}80`,
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              zIndex: 10,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: "0 auto"
+            }}>
+            <Zoom pic={pic}></Zoom>
+          </div>}
+          {thanks && <div
+            onClick={closeThanks}
+            style={{
+              background: `${theme.palette.fifth.main}80`,
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              zIndex: 10,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: "0 auto"
+            }}>
+            <Thanks showThanks={showThanks}></Thanks></div>}
           <div id="content" style={{ backgroundColor: `${theme.palette.primary.main}d0`, padding: "0 15px" }}>
             {/* <Login id="login" showLogin={showLogin} style={{ position: "absolute", zIndex: "2" }}></Login> */}
             <div id="info"><Info></Info></div>
-            <div id="experience"><Experience experience={experience}></Experience></div>
+            <div id="experience"><Experience experience={experience} setZoomPic={setZoomPic}></Experience></div>
             <div id="jobs"><Jobs jobs={jobs}></Jobs></div>
             {/* <div id="works"><InTheWorks projects={projects}></InTheWorks></div> */}
-            <div id="contact">{thanks ? <Thanks showThanks={showThanks}></Thanks> : <Contact showThanks={showThanks}></Contact>}</div>
-            {/* {thanks && } */}
+            <div id="contact"><Contact showThanks={showThanks}></Contact></div>
+
           </div>
           {/* <Button onClick={showLogin}>Login</Button> */}
         </Container>
