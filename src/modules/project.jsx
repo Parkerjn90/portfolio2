@@ -5,9 +5,10 @@ import { useTheme } from '@mui/material/styles';
 const Project = ({ project, setZoomPic }) => {
 
   const theme = useTheme();
-  const onClick = (e) => {
+  const zoomIn = (e) => {
     e.preventDefault();
     setZoomPic(project.gif)
+    console.log(project.gif)
   }
 
   return (
@@ -23,6 +24,8 @@ const Project = ({ project, setZoomPic }) => {
             >{project.title}
             </h4><a
               href={project.site}
+              target="_blank"
+              rel="noreferrer noopener"
               style={{ color: `${theme.palette.fourth.main}` }}
             >GitHub Link
             </a>
@@ -38,7 +41,8 @@ const Project = ({ project, setZoomPic }) => {
               src={project.gif}
               className="placeholder"
               alt="gif depicting what the website in question looks like and some of its functionality"
-              style={{ width: "20em", display: "block", float: "right", marginRight: "10px", border: `4px solid ${theme.palette.fourth.main}`, borderRadius: "5px" }} />
+              style={{ width: "20em", display: "block", float: "right", marginRight: "10px", border: `4px solid ${theme.palette.fourth.main}`, borderRadius: "5px" }}
+              onClick={zoomIn}/>
           </Grid>
         </Grid>
       </div>

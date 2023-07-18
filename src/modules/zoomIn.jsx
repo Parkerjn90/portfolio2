@@ -1,13 +1,10 @@
 import React from 'react';
+import { Card } from '@mui/material';
 
-const Zoom = () => {
+const Zoom = ({ pic }) => {
 
   return (
-
-  <>
-  <h1>ZOOM</h1>
-  </>
-
+      <Card component="img" src={pic} style={{height: '90%', border: '10px solid #fff4de'}}></Card>
   );
 };
 
