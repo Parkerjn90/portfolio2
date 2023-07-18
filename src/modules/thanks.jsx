@@ -20,7 +20,7 @@ const Thanks = () => {
           margin: '0 auto',
           display: 'flex',
           alignItems: 'center',
-          borderRadius: '5px'
+          borderRadius: '10px'
         }}>
           <h2 style={{ color: `${theme.palette.fourth.main}`, fontSize: '30px', margin: '0 auto'}}>Thanks for getting in touch!</h2>
       </div>
